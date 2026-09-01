@@ -38,34 +38,20 @@ const CampaignProgress = () => {
             className="mt-12 rounded-2xl border bg-white p-8 md:p-10 shadow-sm"
             style={{ borderColor: "var(--line)" }}
           >
-            <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-5">
+            <div className="flex flex-col items-center justify-center gap-2 mb-8">
               <p data-testid="campaign-raised-amount">
-                <span className="font-serif-d text-4xl md:text-5xl font-semibold" style={{ color: "var(--sage)" }}>
+                <span className="font-serif-d text-6xl md:text-7xl font-semibold" style={{ color: "var(--sage)" }}>
                   $15,175
                 </span>{" "}
-                <span className="text-base" style={{ color: "var(--ink-3)" }}>
-                  {t("progress.raised")}
-                </span>
               </p>
+              <span className="text-lg" style={{ color: "var(--ink-3)" }}>
+                {t("progress.raised")}
+              </span>
             </div>
-            <div
-              className="h-4 rounded-full overflow-hidden"
-              style={{ background: "var(--bg-2)" }}
-              data-testid="campaign-progress-bar"
-            >
-              <motion.div
-                className="h-full rounded-full"
-                style={{ background: "linear-gradient(90deg, var(--gold), var(--gold-2))" }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${pct}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-              />
-            </div>
-            <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex flex-col items-center justify-center gap-4">
               <p className="inline-flex items-center gap-2 text-base font-medium" style={{ color: "var(--ink-2)" }} data-testid="campaign-supporters">
                 <Users size={18} style={{ color: "var(--sage)" }} />
-                {(data?.supporters ?? 0).toLocaleString()} {t("progress.supporters")} · {pct}%
+                8 supporters
               </p>
               <Link to="/donate" data-testid="campaign-donate-button" className="btn-gold rounded-full px-7 py-3 text-base font-bold">
                 {t("progress.cta")}

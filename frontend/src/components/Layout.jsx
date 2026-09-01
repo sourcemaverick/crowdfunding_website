@@ -68,14 +68,11 @@ const Nav = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <Link to="/" data-testid="nav-logo" className="flex items-center gap-2.5">
-          <span
-            className="w-9 h-9 rounded-full flex items-center justify-center text-white font-serif-d text-xl font-semibold"
-            style={{ background: "var(--sage)" }}
-          >
-            ॐ
-          </span>
-          <span className="font-serif-d text-2xl font-semibold tracking-wide" style={{ color: "var(--ink)" }}>
+          <span className="hidden md:inline font-serif-d text-2xl font-semibold tracking-wide" style={{ color: "var(--ink)" }}>
             Gururaj AI App Crowdfunding
+          </span>
+          <span className="md:hidden font-serif-d text-lg font-semibold tracking-wide" style={{ color: "var(--ink)" }}>
+            Gururaj AI App
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-7">
