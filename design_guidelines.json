@@ -1,0 +1,107 @@
+{
+  "project_title": "SOURCE - Gururaj Ananda Yogi AI Spiritual Companion Crowdfunding",
+  "archetype": "ORGANIC & EARTHY / SWISS MINIMALISM (Light Theme, Sober to Eyes)",
+  "target_audience": "Older adults and spiritual seekers. Needs generous typography, high legibility, calm color palette, high contrast buttons, gentle motion.",
+  "colors": {
+    "background_primary": "#FAF8F5",
+    "background_secondary": "#F3EFEA",
+    "surface_card": "#FFFFFF",
+    "border_subtle": "#E5DFD5",
+    "text_primary": "#1C2126",
+    "text_secondary": "#4A525A",
+    "text_muted": "#737C85",
+    "accent_gold": "#C88A2D",
+    "accent_gold_hover": "#B27822",
+    "accent_sage": "#3E5846",
+    "accent_sage_light": "#E9EFEA",
+    "accent_warm_terracotta": "#B85B3A",
+    "overlay_scrim": "rgba(28, 33, 38, 0.04)"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond, Serif (or Playfair Display)",
+    "body_font": "Plus Jakarta Sans, sans-serif (or Work Sans / Manrope)",
+    "font_sizes": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight leading-tight",
+      "h2_section": "text-2xl sm:text-3xl lg:text-4xl font-serif tracking-normal leading-snug",
+      "h3_subtitle": "text-xl sm:text-2xl font-serif text-amber-900/90",
+      "body_large": "text-lg sm:text-xl text-slate-700 leading-relaxed font-normal",
+      "body_regular": "text-base sm:text-lg text-slate-600 leading-relaxed",
+      "label_overline": "text-xs sm:text-sm font-semibold tracking-widest uppercase text-amber-800"
+    }
+  },
+  "layout_and_spacing": {
+    "container_max_width": "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8",
+    "section_padding": "py-16 md:py-24",
+    "card_padding": "p-6 md:p-8",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
+    "rounded_corners": "rounded-2xl"
+  },
+  "key_functionalities": [
+    "Kinetic hero with headline reveal",
+    "App feature list (SOURCE app: Satsang AI, Conversation Library, Mini-satsangs, Meditation Suite with Chanting/Gong/Candle/Timer/Yoga Nidra/OM, Find Teacher)",
+    "Fundraising purpose section (3 goals: 3D Visual Likeness, Complete Knowledge Base, Multi-lingual)",
+    "Donate tier cards (4 tiers: Supporter $50-500, Sponsor $750-4500, Benefactor $5000+, Investor $10000+ Contact)",
+    "Download App page (App Store / Play Store buttons + feedback form)",
+    "Floating Donate button on all pages",
+    "Footer with general info about Gururaj + Facebook AI Gururaj support page links"
+  ],
+  "image_urls": {
+    "hero_lotus": "https://images.unsplash.com/photo-1590274861629-55cb9135c374?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHw0fHxwZWFjZWZ1bCUyMG1lZGl0YXRpb24lMjBjYW5kbGUlMjBzZXJlbmUl0bmF0dXJlJTIwbGlnaHQlMjBsb3R1c3xlbnwwfHx8fDE3ODgyNTU2NjR8MA&ixlib=rb-4.1.0&q=85",
+    "meditation_candle": "https://images.unsplash.com/photo-1605093659627-4d468d4c3ec7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwzfHxwZWFjZWZ1bCUyMG1lZGl0YXRpb24lMjBjYW5kbGUlMjBzZXJlbmUl0bmF0dXJlJTIwbGlnaHQlMjBsb3R1c3xlbnwwfHx8fDE3ODgyNTU2NjR8MA&ixlib=rb-4.1.0&q=85",
+    "spiritual_teacher_portrait": "https://images.unsplash.com/photo-1549036483-80a2ba8dad65?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHw0fHxzcGlyaXR1YWwlMjB0ZWFjaGVyJTIwbWVkaXRhdGlvbiUyMG1hc3RlciUyMHBvcnRyYWl0JTIwc2VyZW5lfGVufDB8fHx8MTc4ODI1NTY3MXww&ixlib=rb-4.1.0&q=85",
+    "singing_bowl_meditation": "https://images.unsplash.com/photo-1751965331228-6e3e0a001f66?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHw0fHxzaW5naW5nJTIwYm93bCUyMG1lZGl0YXRpb24lMjBnb2xkZW4lMjBsaWdodCUyMHNlcmVuZSUyMHN1bnJpc2V8ZW58MHx8fHwxNzg4MjU1NjcxfDA&ixlib=rb-4.1.0&q=85"
+  },
+  "pages": {
+    "Home": {
+      "route": "/",
+      "components": [
+        "Navigation Header",
+        "Kinetic Hero with headline reveal & background lotus visual",
+        "Editorial Marquee Banner (Satsang Wisdom • AI Spiritual Companion • Meditation)",
+        "About Gururaj Ananda Yogi & Purpose",
+        "SOURCE App Features Showcase (Interactive tab/grid)",
+        "Fundraising Purpose (3 Core Goals)",
+        "Live Progress / Campaign Callout",
+        "Donate Preview Tiers",
+        "Testimonials / Words of Guidance",
+        "Footer"
+      ]
+    },
+    "Download": {
+      "route": "/download",
+      "components": [
+        "Navigation Header",
+        "Download Hero Section",
+        "App Store & Google Play Store Badge Buttons",
+        "App Preview Mockup Visuals & Interactive Feature Checklist",
+        "Feedback Form Link & Modal",
+        "Footer"
+      ]
+    },
+    "Donate": {
+      "route": "/donate",
+      "components": [
+        "Navigation Header",
+        "Donate Hero Section",
+        "Interactive Tier Selector & Tier Cards (Supporter, Sponsor, Benefactor, Investor)",
+        "Stripe Mock Checkout Modal / Contribution Form",
+        "Impact Breakdown & FAQ",
+        "Footer"
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "Ensure all text remains crisp, highly legible (minimum 16px font size, default 18px body text for older adult accessibility).",
+    "Use warm, soothing light theme background #FAF8F5 with subtle stone borders #E5DFD5.",
+    "Do NOT use pure #000000 or harsh pure white backgrounds for main body; use off-white #FFFFFF cards over #FAF8F5 body.",
+    "Incorporate floating donate button at bottom right (fixed z-50 with shadow-lg) on ALL pages with data-testid='floating-donate-button'.",
+    "Include data-testid attributes on every button, route link, card, form element, and modal.",
+    "Implement framer-motion smooth entrance animations and marquee scroll effect for editorial ribbon.",
+    "Add Sonner toast notifications for simulated donation submission and feedback form submission."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "test_id_convention": "All interactive elements must include data-testid in kebab-case e.g. data-testid='nav-link-donate', data-testid='donate-tier-card-supporter'",
+    "accessibility": "High contrast, WCAG AA compliant contrast ratio for all text on light backgrounds",
+    "no_transparent_overlays": "Never use pure transparent backgrounds on sticky header or dropdowns; always use semi-opaque white with backdrop-blur e.g. bg-white/85 backdrop-blur-md"
+  }
+}
