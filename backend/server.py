@@ -42,6 +42,14 @@ class StatusCheckCreate(BaseModel):
 async def root():
     return {"message": "Hello World"}
 
+CAMPAIGN_DEFAULTS = {"goal": 100000, "raised": 18750, "supporters": 214, "currency": "USD"}
+
+@api_router.get("/campaign")
+async def get_campaign():
+    await db.campaign.update_one({"_id": "main"}, {"$setOnInsert": CAMPAIGN_DEFAULTS}, upsert=True)
+    doc = await db.campaign.find_one({"_id": "main"}, {"_id": 0})
+    return doc
+
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
     status_dict = input.model_dump()

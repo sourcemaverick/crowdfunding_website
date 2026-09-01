@@ -1,5 +1,6 @@
 import { Apple, Play, MessageSquareHeart } from "lucide-react";
 import { Reveal, MaskedLine } from "@/components/Anim";
+import { useLang } from "@/i18n";
 
 const APPLE_URL = "https://apps.apple.com/in/app/source-find-yourself/id6761737790";
 const ANDROID_URL = "https://play.google.com/apps/testing/com.superreal.source.android";
@@ -7,20 +8,20 @@ const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdSHLjPci_mRAhKhIbc4WyrAGPPHJwfHmG6dyNyUD0tR_goTA/viewform";
 
 export default function DownloadPage() {
+  const { t, lang } = useLang();
   return (
     <div data-testid="download-page">
       <section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-bold tracking-[0.25em] uppercase mb-6" style={{ color: "var(--gold)" }}>
-            ✦ Free 2 week trial
+            ✦ {t("downloadPage.overline")}
           </p>
-          <h1 className="font-serif-d font-medium text-4xl sm:text-5xl lg:text-6xl leading-tight" data-testid="download-headline">
-            <MaskedLine delay={0.1}>Download the App</MaskedLine>
+          <h1 key={lang} className="font-serif-d font-medium text-4xl sm:text-5xl lg:text-6xl leading-tight" data-testid="download-headline">
+            <MaskedLine delay={0.1}>{t("downloadPage.title")}</MaskedLine>
           </h1>
           <Reveal delay={0.3}>
             <p className="mt-6 text-lg sm:text-xl leading-relaxed" style={{ color: "var(--ink-2)" }}>
-              Download App here for a free 2 week trial. Carry the wisdom of Gururaj Ananda Yogi in your pocket —
-              wherever your journey takes you.
+              {t("downloadPage.subtitle")}
             </p>
           </Reveal>
 
@@ -37,9 +38,9 @@ export default function DownloadPage() {
                 <Apple size={36} style={{ color: "var(--ink)" }} />
                 <span className="text-left">
                   <span className="block text-sm" style={{ color: "var(--ink-3)" }}>
-                    Download on the
+                    {t("downloadPage.appleTop")}
                   </span>
-                  <span className="block text-xl font-bold">Apple App Store</span>
+                  <span className="block text-xl font-bold">{t("downloadPage.appleName")}</span>
                 </span>
               </a>
               <a
@@ -53,9 +54,9 @@ export default function DownloadPage() {
                 <Play size={34} fill="currentColor" style={{ color: "var(--sage)" }} />
                 <span className="text-left">
                   <span className="block text-sm" style={{ color: "var(--ink-3)" }}>
-                    Get it on
+                    {t("downloadPage.googleTop")}
                   </span>
-                  <span className="block text-xl font-bold">Google Play</span>
+                  <span className="block text-xl font-bold">{t("downloadPage.googleName")}</span>
                 </span>
               </a>
             </div>
@@ -69,7 +70,7 @@ export default function DownloadPage() {
             >
               <MessageSquareHeart size={30} style={{ color: "var(--sage)" }} />
               <p className="text-lg" style={{ color: "var(--ink-2)" }}>
-                Please offer feedback —{" "}
+                {t("downloadPage.feedbackPre")}{" "}
                 <a
                   href={FEEDBACK_URL}
                   target="_blank"
@@ -78,9 +79,9 @@ export default function DownloadPage() {
                   className="font-bold underline underline-offset-4 decoration-2"
                   style={{ color: "var(--sage)", textDecorationColor: "var(--gold)" }}
                 >
-                  Click
+                  {t("downloadPage.feedbackClick")}
                 </a>{" "}
-                here
+                {t("downloadPage.feedbackPost")}
               </p>
             </div>
           </Reveal>

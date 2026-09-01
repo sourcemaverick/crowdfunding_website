@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLang } from "@/i18n";
 
 export const Reveal = ({ children, delay = 0, y = 28, className = "" }) => (
   <motion.div
@@ -25,24 +26,17 @@ export const MaskedLine = ({ children, delay = 0, className = "" }) => (
   </span>
 );
 
-const MARQUEE_ITEMS = [
-  "Satsang Wisdom",
-  "AI Spiritual Companion",
-  "Guided Meditation",
-  "Chanting & Gong",
-  "Yoga Nidra",
-  "OM Recordings",
-  "Find a Teacher",
-];
-
-export const Marquee = () => (
+export const Marquee = () => {
+  const { t } = useLang();
+  const items = t("marquee");
+  return (
   <div
     data-testid="editorial-marquee"
     className="relative overflow-hidden border-y py-5"
     style={{ borderColor: "var(--line)", background: "var(--bg-2)" }}
   >
     <div className="marquee-track">
-      {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+      {[...items, ...items, ...items].map((item, i) => (
         <span key={i} className="flex items-center whitespace-nowrap">
           <span className="font-serif-d text-2xl md:text-3xl italic" style={{ color: "var(--ink-2)" }}>
             {item}
@@ -54,4 +48,5 @@ export const Marquee = () => (
       ))}
     </div>
   </div>
-);
+  );
+};

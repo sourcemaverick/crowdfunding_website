@@ -1,63 +1,148 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Sparkles, Library, MessageCircleHeart, Music4, Compass, Bot } from "lucide-react";
+import axios from "axios";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { ArrowRight, Sparkles, Library, MessageCircleHeart, Music4, Compass, Bot, Users } from "lucide-react";
 import { Reveal, MaskedLine, Marquee } from "@/components/Anim";
+import { useLang } from "@/i18n";
 
 const GURURAJ_IMG = "https://customer-assets-eiarnc6j.emergentagent.net/job_enlighten-source/artifacts/8mkp8eq6_gururaj.png";
 const CANDLE_IMG = "https://images.unsplash.com/photo-1605093659627-4d468d4c3ec7?w=1200&q=80&fm=jpg&fit=crop";
+const API = process.env.REACT_APP_BACKEND_URL;
 
-const features = [
-  {
-    icon: Bot,
-    title: "Ask Gururaj Anything",
-    text: "An AI model trained on numerous recorded satsangs of Gururaj answers your deepest questions.",
-  },
-  {
-    icon: Library,
-    title: "Your Personal Library",
-    text: "Every conversation with Gururaj is saved in a library you can return to at any time.",
-  },
-  {
-    icon: MessageCircleHeart,
-    title: "Mini-Satsangs",
-    text: "Personalised mini-satsangs are offered to you, shaped by the questions you ask.",
-  },
-  {
-    icon: Music4,
-    title: "A Complete Meditation Suite",
-    text: "Chanting and gong meditations, candle gazing, timer, yoga nidra and an original OM recording.",
-  },
-  {
-    icon: Compass,
-    title: "Find a Meditation Teacher",
-    text: "SOURCE directs your queries to your country's representative, connecting you with a real teacher.",
-  },
-];
+const featureIcons = [Bot, Library, MessageCircleHeart, Music4, Compass];
 
-const goals = [
-  {
-    num: "01",
-    title: "A 3D Visual Likeness",
-    text: "Obtain more sophisticated technology to design a true-to-life 3D visual likeness of Gururaj, so his presence can be felt, not just heard.",
-  },
-  {
-    num: "02",
-    title: "The Complete Knowledge",
-    text: "Upload a complete knowledge database utilising thousands of hours of original recordings, for a fully immersive experience.",
-  },
-  {
-    num: "03",
-    title: "Every Language, One Light",
-    text: "Create multi-lingual functionality so seekers in every country can hear the teachings in their own tongue.",
-  },
-];
+const CampaignProgress = () => {
+  const { t } = useLang();
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    axios.get(`${API}/api/campaign`).then((r) => setData(r.data)).catch(() => {});
+  }, []);
+  const raised = data?.raised ?? 0;
+  const goal = data?.goal ?? 100000;
+  const pct = Math.min(100, Math.round((raised / goal) * 100));
+  return (
+    <section className="py-16 md:py-24" data-testid="campaign-progress-section">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <Reveal>
+          <p className="text-sm font-bold tracking-[0.25em] uppercase mb-4" style={{ color: "var(--gold)" }}>
+            ✦ {t("progress.overline")}
+          </p>
+          <h2 className="font-serif-d font-medium text-3xl sm:text-4xl lg:text-5xl leading-tight">
+            {t("progress.titlePre")}
+            <em style={{ color: "var(--gold)" }}>{t("progress.titleEm")}</em>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <div
+            className="mt-12 rounded-2xl border bg-white p-8 md:p-10 shadow-sm"
+            style={{ borderColor: "var(--line)" }}
+          >
+            <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-5">
+              <p data-testid="campaign-raised-amount">
+                <span className="font-serif-d text-4xl md:text-5xl font-semibold" style={{ color: "var(--sage)" }}>
+                  ${raised.toLocaleString()}
+                </span>{" "}
+                <span className="text-base" style={{ color: "var(--ink-3)" }}>
+                  {t("progress.raised")}
+                </span>
+              </p>
+              <p className="text-lg font-semibold" style={{ color: "var(--ink-2)" }} data-testid="campaign-goal-amount">
+                {t("progress.of")} ${goal.toLocaleString()} {t("progress.goal")}
+              </p>
+            </div>
+            <div
+              className="h-4 rounded-full overflow-hidden"
+              style={{ background: "var(--bg-2)" }}
+              data-testid="campaign-progress-bar"
+            >
+              <motion.div
+                className="h-full rounded-full"
+                style={{ background: "linear-gradient(90deg, var(--gold), var(--gold-2))" }}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${pct}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
+            <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="inline-flex items-center gap-2 text-base font-medium" style={{ color: "var(--ink-2)" }} data-testid="campaign-supporters">
+                <Users size={18} style={{ color: "var(--sage)" }} />
+                {(data?.supporters ?? 0).toLocaleString()} {t("progress.supporters")} · {pct}%
+              </p>
+              <Link to="/donate" data-testid="campaign-donate-button" className="btn-gold rounded-full px-7 py-3 text-base font-bold">
+                {t("progress.cta")}
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+const QuotesCarousel = () => {
+  const { t } = useLang();
+  const quotes = t("quotes.list");
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setIdx((i) => (i + 1) % quotes.length), 6000);
+    return () => clearInterval(timer);
+  }, [quotes.length]);
+  return (
+    <section
+      className="py-16 md:py-24 border-y text-center"
+      style={{ background: "var(--sage)", borderColor: "var(--sage)" }}
+      data-testid="quotes-section"
+    >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-sm font-bold tracking-[0.25em] uppercase mb-8" style={{ color: "#e0c185" }}>
+          ✦ {t("quotes.overline")}
+        </p>
+        <div className="relative min-h-[170px] md:min-h-[150px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.blockquote
+              key={idx}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif-d italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-white"
+              data-testid="quote-text"
+            >
+              “{quotes[idx]}”
+            </motion.blockquote>
+          </AnimatePresence>
+        </div>
+        <p className="mt-6 font-serif-d text-lg text-white/70">— {t("quotes.author")}</p>
+        <div className="mt-7 flex justify-center gap-2.5">
+          {quotes.map((_, i) => (
+            <button
+              key={i}
+              data-testid={`quote-dot-${i}`}
+              onClick={() => setIdx(i)}
+              aria-label={`Quote ${i + 1}`}
+              className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+              style={{
+                background: i === idx ? "#e0c185" : "rgba(255,255,255,0.3)",
+                transform: i === idx ? "scale(1.3)" : "scale(1)",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function Home() {
   const heroRef = useRef(null);
+  const { t, lang } = useLang();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const haloY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const features = t("features.items");
+  const goals = t("purpose.goals");
 
   return (
     <div data-testid="home-page">
@@ -74,17 +159,19 @@ export default function Home() {
               style={{ color: "var(--gold)" }}
               data-testid="hero-overline"
             >
-              ✦ The next big thing in conscious technology
+              ✦ {t("hero.overline")}
             </motion.p>
             <h1
+              key={lang}
               data-testid="hero-headline"
               className="font-serif-d font-medium text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight"
             >
-              <MaskedLine delay={0.15}>Bringing the Light</MaskedLine>
+              <MaskedLine delay={0.15}>{t("hero.l1")}</MaskedLine>
               <MaskedLine delay={0.3}>
-                of <em style={{ color: "var(--gold)" }}>True Spirituality</em>
+                {t("hero.l2pre")}
+                <em style={{ color: "var(--gold)" }}>{t("hero.l2em")}</em>
               </MaskedLine>
-              <MaskedLine delay={0.45}>to the World</MaskedLine>
+              <MaskedLine delay={0.45}>{t("hero.l3")}</MaskedLine>
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -94,7 +181,7 @@ export default function Home() {
               style={{ color: "var(--ink-2)" }}
               data-testid="hero-subtitle"
             >
-              ~ a mission to bring Gururaj Ananda Yogi's spiritual teachings and presence to the world.
+              {t("hero.subtitle")}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -107,7 +194,7 @@ export default function Home() {
                 data-testid="hero-donate-button"
                 className="btn-gold rounded-full px-8 py-4 text-lg font-bold inline-flex items-center gap-2"
               >
-                Donate Now <ArrowRight size={20} />
+                {t("hero.donate")} <ArrowRight size={20} />
               </Link>
               <Link
                 to="/download"
@@ -115,7 +202,7 @@ export default function Home() {
                 className="text-lg font-semibold underline underline-offset-4 decoration-2 hover:opacity-70 transition-opacity"
                 style={{ color: "var(--sage)", textDecorationColor: "var(--gold)" }}
               >
-                Download App link
+                {t("hero.downloadLink")}
               </Link>
             </motion.div>
           </div>
@@ -145,33 +232,37 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <p className="text-sm font-bold tracking-[0.25em] uppercase mb-4" style={{ color: "var(--gold)" }}>
-              Introducing the app
+              {t("features.overline")}
             </p>
             <h2 className="font-serif-d font-medium text-3xl sm:text-4xl lg:text-5xl max-w-2xl leading-tight">
-              In this version of the app, called <em style={{ color: "var(--sage)" }}>SOURCE</em>
+              {t("features.titlePre")}
+              <em style={{ color: "var(--sage)" }}>{t("features.titleEm")}</em>
             </h2>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f, i) => (
-              <Reveal key={f.title} delay={i * 0.08}>
-                <div
-                  className="tier-card h-full rounded-2xl border bg-white p-7"
-                  style={{ borderColor: "var(--line)" }}
-                  data-testid={`feature-card-${i}`}
-                >
-                  <span
-                    className="inline-flex w-12 h-12 rounded-full items-center justify-center mb-5"
-                    style={{ background: "var(--sage-light)", color: "var(--sage)" }}
+            {features.map((f, i) => {
+              const Icon = featureIcons[i];
+              return (
+                <Reveal key={i} delay={i * 0.08}>
+                  <div
+                    className="tier-card h-full rounded-2xl border bg-white p-7"
+                    style={{ borderColor: "var(--line)" }}
+                    data-testid={`feature-card-${i}`}
                   >
-                    <f.icon size={24} />
-                  </span>
-                  <h3 className="font-serif-d text-2xl font-semibold mb-2.5">{f.title}</h3>
-                  <p className="text-base leading-relaxed" style={{ color: "var(--ink-2)" }}>
-                    {f.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                    <span
+                      className="inline-flex w-12 h-12 rounded-full items-center justify-center mb-5"
+                      style={{ background: "var(--sage-light)", color: "var(--sage)" }}
+                    >
+                      <Icon size={24} />
+                    </span>
+                    <h3 className="font-serif-d text-2xl font-semibold mb-2.5">{f.title}</h3>
+                    <p className="text-base leading-relaxed" style={{ color: "var(--ink-2)" }}>
+                      {f.text}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
             <Reveal delay={0.4}>
               <Link
                 to="/download"
@@ -183,13 +274,11 @@ export default function Home() {
                   <span className="inline-flex w-12 h-12 rounded-full items-center justify-center mb-5 bg-white/15">
                     <Sparkles size={24} />
                   </span>
-                  <h3 className="font-serif-d text-2xl font-semibold mb-2.5">Try it free for 2 weeks</h3>
-                  <p className="text-base leading-relaxed text-white/80">
-                    Download SOURCE today and begin your journey.
-                  </p>
+                  <h3 className="font-serif-d text-2xl font-semibold mb-2.5">{t("features.trialTitle")}</h3>
+                  <p className="text-base leading-relaxed text-white/80">{t("features.trialText")}</p>
                 </div>
                 <span className="inline-flex items-center gap-2 mt-6 font-semibold">
-                  Get the app <ArrowRight size={18} />
+                  {t("features.trialCta")} <ArrowRight size={18} />
                 </span>
               </Link>
             </Reveal>
@@ -209,15 +298,14 @@ export default function Home() {
             <div className="lg:col-span-5">
               <Reveal>
                 <p className="text-sm font-bold tracking-[0.25em] uppercase mb-4" style={{ color: "var(--gold)" }}>
-                  The purpose of fundraising
+                  {t("purpose.overline")}
                 </p>
                 <h2 className="font-serif-d font-medium text-3xl sm:text-4xl lg:text-5xl leading-tight">
-                  Why we ask for your <em style={{ color: "var(--gold)" }}>support</em>
+                  {t("purpose.titlePre")}
+                  <em style={{ color: "var(--gold)" }}>{t("purpose.titleEm")}</em>
                 </h2>
                 <p className="mt-6 text-lg leading-relaxed" style={{ color: "var(--ink-2)" }}>
-                  Gururaj Ananda Yogi (1932–1988) devoted his life to guiding seekers toward the experience of true
-                  spirituality — beyond dogma, beyond division. Your contribution keeps that living voice available to
-                  the world, forever.
+                  {t("purpose.bio")}
                 </p>
                 <div className="mt-8 rounded-2xl overflow-hidden shadow-lg">
                   <img src={CANDLE_IMG} alt="Candle meditation" className="w-full h-52 object-cover" />
@@ -226,14 +314,14 @@ export default function Home() {
             </div>
             <div className="lg:col-span-7 flex flex-col justify-center gap-2">
               {goals.map((g, i) => (
-                <Reveal key={g.num} delay={i * 0.1}>
+                <Reveal key={i} delay={i * 0.1}>
                   <div
                     className="flex gap-6 md:gap-8 py-8 border-b last:border-b-0"
                     style={{ borderColor: "var(--line)" }}
-                    data-testid={`goal-item-${g.num}`}
+                    data-testid={`goal-item-0${i + 1}`}
                   >
                     <span className="font-serif-d text-5xl md:text-6xl font-medium leading-none" style={{ color: "var(--gold)" }}>
-                      {g.num}
+                      0{i + 1}
                     </span>
                     <div>
                       <h3 className="font-serif-d text-2xl md:text-3xl font-semibold mb-2">{g.title}</h3>
@@ -249,22 +337,27 @@ export default function Home() {
         </div>
       </section>
 
+      <CampaignProgress />
+
+      <QuotesCarousel />
+
       {/* CTA */}
       <section className="py-16 md:py-24" data-testid="home-cta-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="font-serif-d font-medium text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto">
-              Be part of something that will <em style={{ color: "var(--gold)" }}>outlast us all</em>
+              {t("cta.titlePre")}
+              <em style={{ color: "var(--gold)" }}>{t("cta.titleEm")}</em>
             </h2>
             <p className="mt-6 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--ink-2)" }}>
-              Every contribution — great or small — brings the light of Gururaj's presence closer to seekers everywhere.
+              {t("cta.text")}
             </p>
             <div className="mt-9 flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link to="/donate" data-testid="cta-donate-button" className="btn-gold rounded-full px-9 py-4 text-lg font-bold">
-                Donate Now
+                {t("cta.donate")}
               </Link>
               <Link to="/download" data-testid="cta-download-button" className="btn-outline-ink rounded-full px-9 py-4 text-lg font-semibold">
-                Download the App
+                {t("cta.download")}
               </Link>
             </div>
           </Reveal>

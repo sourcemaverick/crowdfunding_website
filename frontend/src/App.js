@@ -3,6 +3,7 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
+import { LanguageProvider } from "@/i18n";
 import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import DownloadPage from "@/pages/Download";
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div className="grain">
+      <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -40,6 +42,7 @@ function App() {
         </Routes>
         <Toaster position="top-center" richColors />
       </BrowserRouter>
+      </LanguageProvider>
     </div>
   );
 }

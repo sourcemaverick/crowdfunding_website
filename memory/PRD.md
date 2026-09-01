@@ -16,6 +16,9 @@ Light-themed, sober, modern minimalistic responsive website for a crowdfunding c
 
 ## Implemented (June 2026)
 - Home: kinetic hero (line-by-line masked reveal, arch-framed portrait with parallax + gold halo), editorial marquee, 5 SOURCE app feature cards + download CTA card, numbered manifesto (01/02/03 fundraising goals), CTA, footer
+- Campaign Progress section: animated gold progress bar fed by GET /api/campaign (Mongo `campaign` collection, seeded goal=$100,000, raised=$18,750, supporters=214 — MANUALLY UPDATABLE in DB, not synced with Stripe)
+- Words of Gururaj: rotating quote carousel (5 authentic quotes from published satsangs), auto-advance 6s + dots, on sage band
+- Language switcher (globe dropdown in nav, persists in localStorage): full site in English, Español, Français, हिन्दी via /src/i18n.js
 - Download page: Apple App Store + Google Play buttons (open in new tab, real links), feedback Google Form link
 - Donate page: 4 tier cards — Supporter/Sponsor/Benefactor with real Stripe links (new tab), Investor → Contact Us toast
 - Floating gold Donate button on all pages except /donate
@@ -25,5 +28,5 @@ Light-themed, sober, modern minimalistic responsive website for a crowdfunding c
 ## Backlog
 - P1: Real footer links + Facebook page URL (user to provide)
 - P1: Real investor contact email
-- P2: Campaign progress bar / raised amount
-- P2: Testimonials section, multi-language toggle
+- P2: Sync raised amount with Stripe (needs Stripe API key) or admin update endpoint
+- P2: Testimonials section
