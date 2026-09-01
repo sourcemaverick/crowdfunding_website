@@ -41,14 +41,11 @@ const CampaignProgress = () => {
             <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-5">
               <p data-testid="campaign-raised-amount">
                 <span className="font-serif-d text-4xl md:text-5xl font-semibold" style={{ color: "var(--sage)" }}>
-                  ${raised.toLocaleString()}
+                  $15,175
                 </span>{" "}
                 <span className="text-base" style={{ color: "var(--ink-3)" }}>
                   {t("progress.raised")}
                 </span>
-              </p>
-              <p className="text-lg font-semibold" style={{ color: "var(--ink-2)" }} data-testid="campaign-goal-amount">
-                {t("progress.of")} ${goal.toLocaleString()} {t("progress.goal")}
               </p>
             </div>
             <div
@@ -338,8 +335,6 @@ export default function Home() {
       </section>
 
       <CampaignProgress />
-
-      <QuotesCarousel />
 
       {/* CTA */}
       <section className="py-16 md:py-24" data-testid="home-cta-section">

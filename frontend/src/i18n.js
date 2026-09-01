@@ -12,7 +12,7 @@ const translations = {
     nav: { home: "Home", download: "Download App", donate: "Donate", donateNow: "Donate Now" },
     floating: { donate: "Donate" },
     hero: {
-      overline: "The next big thing in conscious technology",
+      overline: "Bringing Gururaj's teachings into the AI era",
       l1: "Bringing the Light",
       l2pre: "of ",
       l2em: "True Spirituality",
@@ -54,8 +54,8 @@ const translations = {
       bio: "Gururaj Ananda Yogi (1932–1988) devoted his life to guiding seekers toward the experience of true spirituality — beyond dogma, beyond division. Your contribution keeps that living voice available to the world, forever.",
       goals: [
         { title: "A 3D Visual Likeness", text: "Obtain more sophisticated technology to design a true-to-life 3D visual likeness of Gururaj, so his presence can be felt, not just heard." },
-        { title: "The Complete Knowledge", text: "Upload a complete knowledge database utilising thousands of hours of original recordings, for a fully immersive experience." },
-        { title: "Every Language, One Light", text: "Create multi-lingual functionality so seekers in every country can hear the teachings in their own tongue." },
+        { title: "Complete Satsang Knowledge Library", text: "AI system will be trained on thousands of hours of Gururaj's satsangs. It will cover complete knowledge database from Gururaj's teachings." },
+        { title: "Multi-lingual Functionality", text: "The app will support all major european languages such as Spanish, French, German, and so on" },
       ],
     },
     quotes: {
@@ -121,7 +121,7 @@ const translations = {
     nav: { home: "Inicio", download: "Descargar App", donate: "Donar", donateNow: "Donar Ahora" },
     floating: { donate: "Donar" },
     hero: {
-      overline: "Lo próximo grande en tecnología consciente",
+      overline: "Llevando las enseñanzas de Gururaj a la era de la IA",
       l1: "Llevando la Luz",
       l2pre: "de la ",
       l2em: "Verdadera Espiritualidad",
@@ -163,8 +163,8 @@ const translations = {
       bio: "Gururaj Ananda Yogi (1932–1988) dedicó su vida a guiar a los buscadores hacia la experiencia de la verdadera espiritualidad — más allá del dogma y la división. Tu contribución mantiene esa voz viva disponible para el mundo, para siempre.",
       goals: [
         { title: "Una Imagen 3D Fiel", text: "Obtener tecnología más sofisticada para diseñar una imagen 3D realista de Gururaj, para que su presencia pueda sentirse, no solo escucharse." },
-        { title: "El Conocimiento Completo", text: "Subir una base de conocimiento completa con miles de horas de grabaciones originales, para una experiencia totalmente inmersiva." },
-        { title: "Cada Idioma, Una Luz", text: "Crear funcionalidad multilingüe para que los buscadores de cada país escuchen las enseñanzas en su propia lengua." },
+        { title: "Biblioteca Completa de Conocimiento de Satsang", text: "El sistema de IA será entrenado con miles de horas de satsangs de Gururaj. Cubrirá una base de conocimiento completa de las enseñanzas de Gururaj." },
+        { title: "Funcionalidad Multilingüe", text: "La aplicación admitirá todos los idiomas europeos principales como español, francés, alemán, etc." },
       ],
     },
     quotes: {
@@ -230,7 +230,7 @@ const translations = {
     nav: { home: "Accueil", download: "Télécharger l'App", donate: "Faire un don", donateNow: "Donner Maintenant" },
     floating: { donate: "Donner" },
     hero: {
-      overline: "La prochaine grande révolution de la technologie consciente",
+      overline: "Apporter les enseignements de Gururaj à l'ère de l'IA",
       l1: "Apporter la Lumière",
       l2pre: "de la ",
       l2em: "Vraie Spiritualité",
@@ -272,8 +272,8 @@ const translations = {
       bio: "Gururaj Ananda Yogi (1932–1988) a consacré sa vie à guider les chercheurs vers l'expérience de la vraie spiritualité — au-delà des dogmes, au-delà des divisions. Votre contribution garde cette voix vivante accessible au monde, pour toujours.",
       goals: [
         { title: "Une Image 3D Fidèle", text: "Obtenir une technologie plus sophistiquée pour concevoir une image 3D fidèle de Gururaj, afin que sa présence puisse être ressentie, et pas seulement entendue." },
-        { title: "La Connaissance Complète", text: "Mettre en ligne une base de connaissances complète à partir de milliers d'heures d'enregistrements originaux, pour une expérience totalement immersive." },
-        { title: "Chaque Langue, Une Lumière", text: "Créer une fonctionnalité multilingue pour que les chercheurs de chaque pays entendent les enseignements dans leur propre langue." },
+        { title: "Bibliothèque Complète de Connaissances Satsang", text: "Le système d'IA sera entraîné sur des milliers d'heures de satsangs de Gururaj. Il couvrira une base de connaissances complète des enseignements de Gururaj." },
+        { title: "Fonctionnalité Multilingue", text: "L'application supportera toutes les grandes langues européennes telles que l'espagnol, le français, l'allemand, etc." },
       ],
     },
     quotes: {
@@ -339,7 +339,7 @@ const translations = {
     nav: { home: "मुख्य पृष्ठ", download: "ऐप डाउनलोड करें", donate: "दान करें", donateNow: "अभी दान करें" },
     floating: { donate: "दान करें" },
     hero: {
-      overline: "सचेत तकनीक की अगली बड़ी क्रांति",
+      overline: "गुरुराज की शिक्षाओं को एआई के युग में लाना",
       l1: "सच्ची आध्यात्मिकता का",
       l2pre: "",
       l2em: "प्रकाश",
@@ -381,8 +381,8 @@ const translations = {
       bio: "गुरुराज आनंद योगी (1932–1988) ने अपना जीवन साधकों को सच्ची आध्यात्मिकता के अनुभव की ओर ले जाने में समर्पित किया — हठधर्मिता और विभाजन से परे। आपका योगदान उस जीवंत वाणी को सदा के लिए विश्व के लिए उपलब्ध रखता है।",
       goals: [
         { title: "एक सजीव 3D प्रतिरूप", text: "गुरुराज का यथार्थ 3D प्रतिरूप बनाने के लिए अधिक उन्नत तकनीक प्राप्त करना, ताकि उनकी उपस्थिति सुनी ही नहीं, अनुभव भी की जा सके।" },
-        { title: "संपूर्ण ज्ञान भंडार", text: "हज़ारों घंटों की मूल रिकॉर्डिंग से एक संपूर्ण ज्ञान डेटाबेस तैयार करना, एक पूर्ण तल्लीन अनुभव के लिए।" },
-        { title: "हर भाषा, एक प्रकाश", text: "बहुभाषी सुविधा बनाना ताकि हर देश के साधक अपनी भाषा में शिक्षाएँ सुन सकें।" },
+        { title: "संपूर्ण सत्संग ज्ञान पुस्तकालय", text: "एआई सिस्टम गुरुराज के हज़ारों घंटों के सत्संग पर प्रशिक्षित होगा। यह गुरुराज की शिक्षाओं के संपूर्ण ज्ञान डेटाबेस को कवर करेगा।" },
+        { title: "बहुभाषी कार्यक्षमता", text: "ऐप स्पेनिश, फ्रेंच, जर्मन आदि जैसी सभी प्रमुख यूरोपीय भाषाओं को सपोर्ट करेगा।" },
       ],
     },
     quotes: {

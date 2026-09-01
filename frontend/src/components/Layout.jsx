@@ -75,7 +75,7 @@ const Nav = () => {
             ॐ
           </span>
           <span className="font-serif-d text-2xl font-semibold tracking-wide" style={{ color: "var(--ink)" }}>
-            SOURCE
+            Gururaj AI App Crowdfunding
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-7">
@@ -149,7 +149,7 @@ const FloatingDonate = () => {
     <Link
       to="/donate"
       data-testid="floating-donate-button"
-      className="float-donate btn-gold fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full px-6 py-3.5 text-lg font-bold"
+      className="float-donate btn-gold fixed bottom-32 right-6 z-50 flex items-center gap-2 rounded-full px-6 py-3.5 text-lg font-bold"
     >
       <Heart size={20} fill="currentColor" />
       {t("floating.donate")}
@@ -163,11 +163,8 @@ const Footer = () => {
     <footer className="border-t" style={{ background: "var(--sage)", borderColor: "var(--line)" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-white/85">
         <div>
-          <div className="flex items-center gap-2.5 mb-4">
-            <span className="w-9 h-9 rounded-full flex items-center justify-center bg-white/15 font-serif-d text-xl">ॐ</span>
-            <span className="font-serif-d text-2xl font-semibold text-white">SOURCE</span>
-          </div>
-          <p className="text-base leading-relaxed">{t("footer.mission")}</p>
+          <span className="font-serif-d text-2xl font-semibold text-white">Gururaj AI App Crowdfunding Campaign</span>
+          <p className="text-base leading-relaxed mt-4">{t("footer.mission")}</p>
         </div>
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-4">{t("footer.about")}</h4>
@@ -192,7 +189,7 @@ const Footer = () => {
         <div>
           <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-4">{t("footer.community")}</h4>
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/profile.php?id=61593989761784"
             target="_blank"
             rel="noopener noreferrer"
             data-testid="footer-link-facebook"
