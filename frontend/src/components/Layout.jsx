@@ -167,7 +167,7 @@ const Footer = () => {
           <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-4">{t("footer.about")}</h4>
           <ul className="space-y-3 text-base">
             <li>
-              <a href="#gururaj-info" data-testid="footer-link-gururaj-info" className="hover:text-white transition-colors">
+              <a href="https://www.americanmeditationsociety.org/about/ams-history-2/" target="_blank" rel="noopener noreferrer" data-testid="footer-link-gururaj-info" className="hover:text-white transition-colors">
                 {t("footer.info")}
               </a>
             </li>
@@ -196,7 +196,7 @@ const Footer = () => {
             {t("footer.fb")}
           </a>
           <p className="mt-6 text-sm text-white/60">
-            © {new Date().getFullYear()} SOURCE. {t("footer.rights")}
+            © {new Date().getFullYear()} The Source. {t("footer.rights")}
           </p>
         </div>
       </div>

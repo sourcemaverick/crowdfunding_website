@@ -1,5 +1,4 @@
-import { toast } from "sonner";
-import { HandHeart, Award, Crown, Gem, Mail, ExternalLink } from "lucide-react";
+import { HandHeart, Award, Crown, Gem, ExternalLink } from "lucide-react";
 import { Reveal, MaskedLine } from "@/components/Anim";
 import { useLang } from "@/i18n";
 
@@ -7,17 +6,11 @@ const tiers = [
   { id: "supporter", icon: HandHeart, range: "$50 – 500", url: "https://buy.stripe.com/eVq7sL5cpd1paLh1izaZi0q" },
   { id: "sponsor", icon: Award, range: "$750 – 4,500", url: "https://buy.stripe.com/bJebJ15cp4uT7z59P5aZi0r", featured: true },
   { id: "benefactor", icon: Crown, range: "$5,000 +", url: "https://buy.stripe.com/aFafZh9sF1iH7z5gdtaZi0s" },
-  { id: "investor", icon: Gem, range: "$10,000 +", contact: true },
+  { id: "investor", icon: Gem, range: "$10,000 +", url: "https://docs.google.com/forms/d/1qq97EQpQx2gQllfS65_eiEsUBJTTrDOeOdCRSHl2ILM/edit" },
 ];
 
 export default function DonatePage() {
   const { t, lang } = useLang();
-  const handleInvestor = () => {
-    toast.success(t("donatePage.toastTitle"), {
-      description: t("donatePage.toastDesc"),
-      duration: 8000,
-    });
-  };
 
   return (
     <div data-testid="donate-page">
@@ -73,25 +66,15 @@ export default function DonatePage() {
                     <p className="mt-3 text-base leading-relaxed flex-1" style={{ color: "var(--ink-2)" }}>
                       {perk}
                     </p>
-                    {tier.contact ? (
-                      <button
-                        onClick={handleInvestor}
-                        data-testid={`donate-tier-button-${tier.id}`}
-                        className="btn-outline-ink mt-7 rounded-full px-6 py-3 text-base font-bold inline-flex items-center justify-center gap-2"
-                      >
-                        <Mail size={18} /> {t("donatePage.contact")}
-                      </button>
-                    ) : (
-                      <a
-                        href={tier.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-testid={`donate-tier-button-${tier.id}`}
-                        className="btn-gold mt-7 rounded-full px-6 py-3 text-base font-bold inline-flex items-center justify-center gap-2"
-                      >
-                        {t("donatePage.giveAs")} {name} <ExternalLink size={17} />
-                      </a>
-                    )}
+                    <a
+                      href={tier.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid={`donate-tier-button-${tier.id}`}
+                      className="btn-gold mt-7 rounded-full px-6 py-3 text-base font-bold inline-flex items-center justify-center gap-2"
+                    >
+                      {t("donatePage.giveAs")} {name} <ExternalLink size={17} />
+                    </a>
                   </div>
                 </Reveal>
               );

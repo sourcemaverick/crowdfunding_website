@@ -210,7 +210,7 @@ export default function Home() {
 
       <Marquee />
 
-      {/* SOURCE APP */}
+      {/* THE SOURCE APP */}
       <section className="py-16 md:py-24" data-testid="features-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
